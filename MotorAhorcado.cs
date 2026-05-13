@@ -1,4 +1,6 @@
-﻿namespace Ahorcado
+﻿using System.Collections.Generic;
+
+namespace Ahorcado
 {
     public class MotorAhorcado
     {
@@ -12,9 +14,9 @@
 
         public bool MostrarPista => _intentosRestantes <= 3;
 
-        public MotorAhorcado(IRepositorioPalabras repositorio)
+        public MotorAhorcado(IRepositorioPalabras repositorio, string categoria)
         {
-            _palabraSecreta = repositorio.ObtenerPalabraAleatoria();
+            _palabraSecreta = repositorio.ObtenerPalabraAleatoria(categoria);
         }
 
         public bool LetraYaUsada(char letra) => _letrasUsadas.Contains(letra);

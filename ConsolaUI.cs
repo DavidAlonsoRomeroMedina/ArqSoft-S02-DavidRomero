@@ -1,4 +1,6 @@
-﻿namespace Ahorcado
+﻿using System;
+
+namespace Ahorcado
 {
     public class ConsolaUI
     {
@@ -16,7 +18,6 @@
             Console.WriteLine($"Intentos restantes: {_motor.IntentosRestantes}");
             Console.WriteLine($"Letras usadas: {string.Join(",", _motor.LetrasUsadas)}");
 
-            // Aquí consumimos la propiedad del motor
             if (_motor.MostrarPista)
                 Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]}'");
 
