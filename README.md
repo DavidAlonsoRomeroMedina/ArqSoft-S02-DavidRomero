@@ -1,4 +1,4 @@
-﻿# Creación de la clase Dios
+# Creación de la clase Dios
 En este proyecto se creo la clase Dios llamada "Juego" que tiene un método llamado "CrearMundo" el cual se encarga de crear el mundo y sus elementos.
 
 # Creación de la clase IRepositorioPalabras
@@ -33,3 +33,17 @@ Respuestas a los Retos del Profesor:
 Reflexión sobre la implementación de las pistas.
 
 En la clase Dios (Juego.cs) fue más rápido porque solo tuve que modificar un método, pero en la versión refactorizada fue más fácil de entender y seguro a nivel arquitecto.
+
+---
+
+# Integración del juego Viborita
+Para agregar el nuevo juego respetando los principios SOLID (específicamente OCP y SRP), se crearon las siguientes clases e interfaces para que la Viborita funcione correctamente de forma independiente:
+
+* **Creación de la interfaz `IMotorJuego`:** Se implementó esta interfaz con los métodos `Ganado()` y `Perdido()` para estandarizar el estado de victoria o derrota de cualquier juego, permitiendo escalabilidad.
+* **Creación de la clase `MotorViborita`:** Esta clase maneja exclusivamente la lógica de negocio de la serpiente. Define las reglas: el tamaño del tablero, las coordenadas del cuerpo, el movimiento, el crecimiento al comer, la generación aleatoria de la comida y la detección de colisiones (chocar con las paredes o con su propio cuerpo).
+* **Creación de la clase `ConsolaUIViborita`:** Se encarga únicamente de la presentación (UI). Renderiza el tablero en la consola, dibuja la cabeza (`@`), el cuerpo (`o`) y la comida (`*`). También incluye la lógica para capturar las teclas (flechas) que el usuario presiona en tiempo real.
+
+# Paso 11: Categorías y ajustes finales
+* **Se modificó `IRepositorioPalabras` y `PalabrasEnMemoria`:** Se implementó un diccionario para separar las palabras en las categorías solicitadas (Arquitectura, POO, .NET).
+* **Se modificó `MotorAhorcado`:** Ahora su constructor recibe la categoría seleccionada por el jugador.
+* **Ajustes en `Program.cs`:** Se integró un menú para seleccionar el juego (Ahorcado o Viborita) y la categoría. Se corrigió un error de sintaxis (falta de llaves `{ }` en la condición `else` que causaba conflicto entre los juegos) y se añadió la directiva `using System.Threading;` para permitir el funcionamiento de `Thread.Sleep(150)`, el cual controla la velocidad de la Viborita.
